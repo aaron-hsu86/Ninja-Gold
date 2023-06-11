@@ -36,34 +36,37 @@ def process_money():
             session['activity_log'] += [f'<p style="color:red">You win some, you lose some. Today, you broke even at the casino.</p>']
     
     # original method, but wrote hidden method above afterwards. Kept this for educational purposes
-    if 'farm' in request.form:
-        gold = random.randint(10,20)
-        session['gold'] += gold
-        session['activity_log'] += [f'<p style="color:green">Earned {gold} gold from farm!</p>']
-    elif 'cave' in request.form:
-        gold = random.randint(5,10)
-        session['gold'] += gold
-        session['activity_log'] += [f'<p style="color:green">Earned {gold} gold from cave!</p>']
-    elif 'house' in request.form:
-        gold = random.randint(2,5)
-        session['activity_log'] += [f'<p style="color:green">Earned {gold} gold from house!</p>']
-        session['gold'] += gold
-    elif 'casino' in request.form:
-        gamble = random.randint(-50,50)
-        session['gold'] += gamble
-        if gamble > 0:
-            session['activity_log'] += [f'<p style="color:green">Earned {gamble} gold from the casino!</p>']
-        elif gamble < 0:
-            session['activity_log'] += [f'<p style="color:red">Lost {gamble} gold from the casino!</p>']
-        else:
-            session['activity_log'] += [f'<p style="color:red">You win some, you lose some. Today, you broke even at the casino.</p>']
+    # if 'farm' in request.form:
+    #     gold = random.randint(10,20)
+    #     session['gold'] += gold
+    #     session['activity_log'] += [f'<p style="color:green">Earned {gold} gold from farm!</p>']
+    # elif 'cave' in request.form:
+    #     gold = random.randint(5,10)
+    #     session['gold'] += gold
+    #     session['activity_log'] += [f'<p style="color:green">Earned {gold} gold from cave!</p>']
+    # elif 'house' in request.form:
+    #     gold = random.randint(2,5)
+    #     session['activity_log'] += [f'<p style="color:green">Earned {gold} gold from house!</p>']
+    #     session['gold'] += gold
+    # elif 'casino' in request.form:
+    #     gamble = random.randint(-50,50)
+    #     session['gold'] += gamble
+    #     if gamble > 0:
+    #         session['activity_log'] += [f'<p style="color:green">Earned {gamble} gold from the casino!</p>']
+    #     elif gamble < 0:
+    #         session['activity_log'] += [f'<p style="color:red">Lost {gamble} gold from the casino!</p>']
+    #     else:
+    #         session['activity_log'] += [f'<p style="color:red">You win some, you lose some. Today, you broke even at the casino.</p>']
     
     session['activity'] = " ".join(session['activity_log'])
 
     return redirect('/')
 
 
-
+@app.route('/restart')
+def restart_session():
+    session.clear()
+    return redirect('/')
 
 
 

@@ -19,8 +19,9 @@
     
     <div class="your_gold mt-3 ms-3">
         <h3>Your Gold: {{session['gold']}}</h3>
+        <a href="/restart"><button class="btn btn-danger">Restart</button></a>
     </div>
-
+{#}
     <div class="action-items">
         <form action="/process_money" method="post" class="d-flex justify-content-center gap-5 p-3">
             <div class="farm-action d-flex flex-column flex-fill align-items-center card text-secondary p-3">
@@ -46,7 +47,7 @@
         </form>
     </div>
 
-    <h2>Hidden forms method:</h2>
+    <h2>Hidden forms method:</h2>#}
     <div class="action-items d-flex justify-content-center gap-5 p-3">
         <div class="farm-action d-flex flex-column flex-fill align-items-center card text-secondary p-3">
             <form action="/process_money" method="post">
@@ -82,13 +83,13 @@
         </div>
     </div>
 
+    
     <div class="activity-log p-3">
         <h2>Activies:</h2>
         <div id="fake_textarea" contenteditable>{{session['activity']|safe}}</div>
         {#<textarea name="activity-log" id="activity-log" disabled>{{session['activity'] | safe}}</textarea>#}
 
     </div>
-
 
 
 
